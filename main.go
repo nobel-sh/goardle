@@ -116,6 +116,10 @@ func can_remove(str string, b byte, cells []Cell) bool {
 	return false
 }
 
+func filter_present(cells []Cell, words []string){
+
+}
+
 func filter_absent(cells []Cell, words []string) []string {
 	new_words := []string{}
 	has_correct := generate_has_correct(cells)
@@ -144,12 +148,12 @@ func filter_correct(cells []Cell, words []string) []string {
 	for _, word := range words {
 		flag := false
 		for i, cell := range cells {
-			if cell.state == CORRECT && word[i] == cell.ch {
+			if cell.state == CORRECT && word[i] != cell.ch {
 				flag = true
 				break
 			}
 		}
-		if flag {
+		if !flag {
 			new_words = append(new_words, word)
 		}
 	}
